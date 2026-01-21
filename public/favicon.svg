@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4d03f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4d03f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="45" fill="none" stroke="#000" stroke-width="8"/>
+
+  <!-- Gold ring with gradient -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="url(#goldGradient)" stroke-width="12"/>
+
+  <!-- Inner shadow -->
+  <circle cx="50" cy="50" r="30" fill="none" stroke="#8b6914" stroke-width="2" opacity="0.5"/>
+
+  <!-- Elvish script decoration (simplified) -->
+  <path d="M 30 25 Q 40 20, 50 25 T 70 25" fill="none" stroke="#8b3a3a" stroke-width="1.5" opacity="0.8"/>
+  <path d="M 25 50 Q 20 40, 25 30" fill="none" stroke="#8b3a3a" stroke-width="1.5" opacity="0.8"/>
+  <path d="M 75 50 Q 80 40, 75 30" fill="none" stroke="#8b3a3a" stroke-width="1.5" opacity="0.8"/>
+  <path d="M 30 75 Q 40 80, 50 75 T 70 75" fill="none" stroke="#8b3a3a" stroke-width="1.5" opacity="0.8"/>
+</svg>

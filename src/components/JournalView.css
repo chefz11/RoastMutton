@@ -181,3 +181,166 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .journal-view {
+    max-width: 100%;
+  }
+
+  .journal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .journal-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .entries-list {
+    padding-left: 1.5rem;
+  }
+
+  .journal-entry::before {
+    left: -2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .journal-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .journal-stats {
+    gap: 0.75rem;
+  }
+
+  .date-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .entries-list {
+    padding-left: 1rem;
+  }
+
+  .journal-entry::before {
+    left: -1.5rem;
+    font-size: 1rem;
+  }
+
+  .entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entry-meta {
+    width: 100%;
+  }
+
+  .book-badge,
+  .chapter-badge,
+  .privacy-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .entry-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 320px) {
+  .journal-header {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .journal-header h1 {
+    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .journal-stats {
+    gap: 0.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .empty-state {
+    padding: 3rem 1rem;
+  }
+
+  .date-group {
+    margin-bottom: 2rem;
+  }
+
+  .date-header {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .date-header h2 {
+    font-size: 1rem;
+  }
+
+  .entries-list {
+    padding-left: 0.75rem;
+    gap: 1rem;
+  }
+
+  .entries-list::before {
+    display: none;
+  }
+
+  .journal-entry {
+    padding-left: 0;
+  }
+
+  .journal-entry::before {
+    display: none;
+  }
+
+  .entry-header {
+    gap: 0.5rem;
+  }
+
+  .book-badge,
+  .chapter-badge,
+  .privacy-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .entry-time {
+    font-size: 0.8rem;
+  }
+
+  .entry-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 0.75rem 0;
+  }
+
+  .entry-footer {
+    font-size: 0.85rem;
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .edit-hint {
+    font-size: 0.75rem;
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+    opacity: 1;
+  }
+}

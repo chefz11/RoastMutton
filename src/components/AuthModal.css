@@ -20,3 +20,42 @@
 .success-message p {
   margin: 0.5rem 0;
 }
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .success-message {
+    padding: 1.5rem;
+  }
+
+  .success-message h3 {
+    font-size: 1.1rem;
+  }
+
+  .success-message p {
+    font-size: 0.95rem;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .success-message {
+    padding: 1rem;
+  }
+
+  .success-message h3 {
+    font-size: 1rem;
+  }
+
+  .success-message p {
+    font-size: 0.9rem;
+  }
+
+  .error-message {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+}

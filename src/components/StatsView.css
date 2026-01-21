@@ -161,3 +161,152 @@
     transform: translateY(-5px);
   }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-view {
+    max-width: 100%;
+  }
+
+  .stats-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .stat-large {
+    font-size: 3rem;
+  }
+
+  .book-stat-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .percentage {
+    font-size: 1.3rem;
+  }
+
+  .achievement-badge {
+    padding: 1rem;
+  }
+
+  .achievement-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .stats-header {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-header h1 {
+    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .stat-card svg {
+    order: 2;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-large {
+    font-size: 2.5rem;
+  }
+
+  .completion-estimate {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+  .book-stat-header h3 {
+    font-size: 1rem;
+  }
+
+  .percentage {
+    font-size: 1.2rem;
+  }
+
+  .book-stat-details {
+    font-size: 0.85rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .achievement-badge {
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .achievement-icon {
+    font-size: 2rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .achievement-title {
+    font-size: 0.9rem;
+  }
+
+  .achievement-description {
+    font-size: 0.75rem;
+  }
+}

@@ -200,3 +200,85 @@ textarea {
   margin: 2rem 0;
   opacity: 0.6;
 }
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .app {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+  }
+
+  .ornament {
+    font-size: 1.2rem;
+    margin: 1.5rem 0;
+  }
+}
