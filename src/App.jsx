@@ -37,21 +37,23 @@ function App() {
   }, [authLoading, user]);
 
   const handleStartReading = (bookId) => {
+    const book = BOOKS.find(b => b.id === bookId);
     if (!progress.startDate) {
       updateProgress({ ...progress, currentBook: bookId, startDate: new Date().toISOString() });
     } else {
       updateProgress({ ...progress, currentBook: bookId });
     }
-    setSelectedBook(BOOKS.find(b => b.id === bookId));
+    setSelectedBook(book);
     setCurrentView('book');
   };
 
   const handleChapterComplete = (bookId, chapterNumber) => {
     const chapterId = `${bookId}-${chapterNumber}`;
-    if (!progress.completedChapters.includes(chapterId)) {
+    const completedChapters = progress?.completedChapters || [];
+    if (!completedChapters.includes(chapterId)) {
       updateProgress({
         ...progress,
-        completedChapters: [...progress.completedChapters, chapterId],
+        completedChapters: [...completedChapters, chapterId],
         currentChapter: chapterNumber
       });
     }

@@ -25,8 +25,25 @@ function BookView({
   const [editingChapter, setEditingChapter] = useState(null);
   const [editingJournal, setEditingJournal] = useState(null);
 
+  // Safety check: if book is not loaded, show error and allow going back
+  if (!book) {
+    return (
+      <div className="book-view fade-in">
+        <header className="book-header">
+          <button onClick={onBack} className="back-button">
+            <ArrowLeft size={20} /> Back
+          </button>
+          <div>
+            <h1>Book not found</h1>
+            <p>Unable to load book data. Please try again.</p>
+          </div>
+        </header>
+      </div>
+    );
+  }
+
   const isChapterCompleted = (chapterNumber) => {
-    return progress.completedChapters.includes(`${book.id}-${chapterNumber}`);
+    return progress?.completedChapters?.includes(`${book.id}-${chapterNumber}`) || false;
   };
 
   const handleCompleteChapter = (chapter) => {
@@ -35,10 +52,10 @@ function BookView({
     setShowJournalForm(true);
   };
 
-  const handleSubmitJournal = (e) => {
+  const handleSubmitJournal = async (e) => {
     e.preventDefault();
     if (journalText.trim()) {
-      onAddJournalEntry({
+      const result = await onAddJournalEntry({
         bookId: book.id,
         bookTitle: book.title,
         chapterNumber: selectedChapter.number,
@@ -48,16 +65,20 @@ function BookView({
         type: 'chapter',
         isPrivate: isPrivate
       });
-      setJournalText('');
-      setPagesRead('');
-      setIsPrivate(false);
-      setShowJournalForm(false);
-      setSelectedChapter(null);
+
+      // Only close the form if save was successful
+      if (result.success) {
+        setJournalText('');
+        setPagesRead('');
+        setIsPrivate(false);
+        setShowJournalForm(false);
+        setSelectedChapter(null);
+      }
     }
   };
 
   const getChapterEntries = (chapterNumber) => {
-    return journalEntries.filter(
+    return (journalEntries || []).filter(
       entry => entry.bookId === book.id && entry.chapterNumber === chapterNumber
     );
   };

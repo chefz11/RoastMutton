@@ -5,9 +5,11 @@ import './JournalView.css';
 
 function JournalView({ entries, onUpdateEntry, onDeleteEntry, onBack }) {
   const [editingEntry, setEditingEntry] = useState(null);
-  const sortedEntries = [...entries].sort((a, b) =>
-    new Date(b.timestamp) - new Date(a.timestamp)
-  );
+  const sortedEntries = [...entries].sort((a, b) => {
+    const aTime = a.createdAt || a.timestamp || 0;
+    const bTime = b.createdAt || b.timestamp || 0;
+    return bTime - aTime;
+  });
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -29,7 +31,8 @@ function JournalView({ entries, onUpdateEntry, onDeleteEntry, onBack }) {
 
   const groupEntriesByDate = () => {
     return sortedEntries.reduce((groups, entry) => {
-      const date = new Date(entry.timestamp).toDateString();
+      const timestamp = entry.createdAt || entry.timestamp || Date.now();
+      const date = new Date(timestamp).toDateString();
       if (!groups[date]) groups[date] = [];
       groups[date].push(entry);
       return groups;
@@ -81,7 +84,7 @@ function JournalView({ entries, onUpdateEntry, onDeleteEntry, onBack }) {
             <div key={date} className="date-group">
               <div className="date-header">
                 <Calendar size={20} />
-                <h2>{formatDate(dateEntries[0].timestamp)}</h2>
+                <h2>{formatDate(dateEntries[0].createdAt || dateEntries[0].timestamp)}</h2>
               </div>
               <div className="entries-list">
                 {dateEntries.map(entry => (
@@ -102,7 +105,7 @@ function JournalView({ entries, onUpdateEntry, onDeleteEntry, onBack }) {
                           <span className="privacy-badge">🔒 Private</span>
                         )}
                       </div>
-                      <div className="entry-time">{formatTime(entry.timestamp)}</div>
+                      <div className="entry-time">{formatTime(entry.createdAt || entry.timestamp)}</div>
                     </div>
                     <div className="entry-content">{entry.content}</div>
                     {entry.pagesRead && (

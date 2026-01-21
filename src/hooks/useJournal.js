@@ -21,15 +21,22 @@ export function useJournal(userId, groupId = null) {
 
     const unsubscribe = onValue(userEntriesRef, (snapshot) => {
       const data = snapshot.val();
+      console.log('Journal entries snapshot:', { hasData: !!data, userId, dataKeys: data ? Object.keys(data) : [] });
       if (data) {
         const entriesArray = Object.entries(data).map(([id, entry]) => ({
           id,
           ...entry
         }));
+        console.log('Parsed journal entries:', entriesArray);
         setEntries(entriesArray);
       } else {
+        console.log('No journal entries found, checking localStorage');
+        setEntries([]); // Set empty array when no data
         migrateFromLocalStorage(userId);
       }
+      setLoading(false);
+    }, (error) => {
+      console.error('Error loading journal entries:', error);
       setLoading(false);
     });
 
@@ -57,11 +64,17 @@ export function useJournal(userId, groupId = null) {
         updatedAt: Date.now()
       };
       console.log('Attempting to save journal entry:', entryData);
+      console.log('Database path:', newEntryRef.toString());
       await set(newEntryRef, entryData);
       console.log('Journal entry saved successfully:', newEntryRef.key);
       return { success: true, id: newEntryRef.key };
     } catch (error) {
-      console.error('Failed to save journal entry:', error);
+      console.error('Failed to save journal entry. Error details:', {
+        code: error.code,
+        message: error.message,
+        name: error.name,
+        fullError: error
+      });
       return { success: false, error: error.message };
     }
   };
