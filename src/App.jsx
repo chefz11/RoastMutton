@@ -17,7 +17,7 @@ import Toast from './components/Toast';
 import './App.css';
 
 function App() {
-  const { user, loading: authLoading, signInWithEmail, logout } = useAuth();
+  const { user, loading: authLoading, signInWithEmail, signInWithGoogle, logout } = useAuth();
   const { progress, loading: progressLoading, updateProgress } = useProgress(user?.uid);
   const { group, buddyId } = useReadingGroup(user?.uid);
   const { entries: journalEntries, loading: journalLoading, addEntry, updateEntry, deleteEntry } = useJournal(user?.uid, group?.id);
@@ -203,6 +203,7 @@ function App() {
         <AuthModal
           onClose={() => setShowAuthModal(false)}
           onSignIn={signInWithEmail}
+          onGoogleSignIn={signInWithGoogle}
         />
       )}
       {renderView()}

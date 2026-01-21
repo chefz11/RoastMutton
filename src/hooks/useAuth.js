@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { onAuthStateChanged, signInWithEmailLink, sendSignInLinkToEmail, signOut, isSignInWithEmailLink } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailLink, sendSignInLinkToEmail, signOut, isSignInWithEmailLink, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 
 export function useAuth() {
@@ -37,6 +37,20 @@ export function useAuth() {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      console.log('Attempting Google sign-in...');
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      console.log('Google sign-in successful:', result.user.email);
+      return { success: true, user: result.user };
+    } catch (error) {
+      console.error('Google sign-in error:', error);
+      setError(error.message);
+      return { success: false, error: error.message };
+    }
+  };
+
   const completeSignIn = async () => {
     try {
       if (!isSignInWithEmailLink(auth, window.location.href)) {
@@ -67,5 +81,5 @@ export function useAuth() {
     }
   };
 
-  return { user, loading, error, signInWithEmail, completeSignIn, logout };
+  return { user, loading, error, signInWithEmail, signInWithGoogle, completeSignIn, logout };
 }
