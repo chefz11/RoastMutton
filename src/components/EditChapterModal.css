@@ -1,0 +1,27 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.close-button {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #d4af37;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #f4d03f;
+  transform: none;
+  box-shadow: none;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #a89177;
+  font-style: italic;
+  margin-top: 0.5rem;
+}

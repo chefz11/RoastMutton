@@ -1,0 +1,163 @@
+.stats-view {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.stats-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-card svg {
+  color: #d4af37;
+}
+
+.progress-overview {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.overall-stat {
+  margin: 2rem 0;
+}
+
+.stat-large {
+  font-size: 4rem;
+  color: #d4af37;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.completion-estimate {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 4px;
+  color: #a89177;
+}
+
+.completion-estimate strong {
+  color: #d4af37;
+}
+
+.books-progress {
+  margin: 2rem 0;
+}
+
+.books-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.book-stat {
+  padding: 1rem 0;
+}
+
+.book-stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.book-stat-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.percentage {
+  font-size: 1.5rem;
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.book-stat-details {
+  color: #a89177;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.achievements {
+  margin: 2rem 0;
+}
+
+.achievements h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.achievement-badge {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(26, 20, 16, 0.4);
+  border-radius: 8px;
+  border: 2px solid #6b5744;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+.achievement-badge:hover {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+  box-shadow: 0 8px 16px rgba(212, 175, 55, 0.2);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  animation: bounce 2s infinite;
+}
+
+.achievement-title {
+  font-weight: bold;
+  color: #d4af37;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.achievement-description {
+  font-size: 0.8rem;
+  color: #a89177;
+  line-height: 1.4;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}

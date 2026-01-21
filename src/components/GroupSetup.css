@@ -1,0 +1,95 @@
+.group-setup {
+  text-align: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 3rem 2rem;
+}
+
+.group-setup svg {
+  color: #d4af37;
+  margin-bottom: 1rem;
+}
+
+.setup-options {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.option {
+  padding: 1.5rem;
+  background: rgba(26, 20, 16, 0.4);
+  border-radius: 8px;
+  border: 1px solid #6b5744;
+}
+
+.option h3 {
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+
+.option p {
+  color: #a89177;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  text-align: center;
+  color: #8b7355;
+  font-weight: bold;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #6b5744;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.invite-code-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.code {
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #d4af37;
+  letter-spacing: 0.2em;
+  padding: 1rem 2rem;
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+}
+
+.copy-button {
+  padding: 0.75rem;
+  background: transparent;
+  border: 2px solid #8b7355;
+}
+
+.copy-button:hover {
+  border-color: #d4af37;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #a89177;
+  font-style: italic;
+}

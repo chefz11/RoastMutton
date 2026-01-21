@@ -1,0 +1,35 @@
+.buddy-journal-view {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.buddy-journal-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.buddy-journal-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buddy-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+
+.buddy-entry {
+  opacity: 0.95;
+}
+
+.buddy-entry::before {
+  content: '👥';
+  position: absolute;
+  left: -2.5rem;
+  top: 1.5rem;
+  font-size: 1.2rem;
+}
