@@ -1,11 +1,11 @@
 import { BOOKS } from '../data/books';
-import { Book, ScrollText, BarChart3, MapPin, Users, TrendingUp } from 'lucide-react';
+import { Book, ScrollText, BarChart3, MapPin, Users, TrendingUp, LogOut } from 'lucide-react';
 import { useReadingGroup } from '../hooks/useReadingGroup';
 import { useBuddyData } from '../hooks/useBuddyData';
 import GroupSetup from './GroupSetup';
 import './Dashboard.css';
 
-function Dashboard({ progress, journalEntries, userId, onStartReading, onViewJournal, onViewStats, onViewBuddyJournal, onViewSharedStats }) {
+function Dashboard({ progress, journalEntries, userId, userEmail, onStartReading, onViewJournal, onViewStats, onViewBuddyJournal, onViewSharedStats, onLogout }) {
   const { group, buddyId, createGroup, joinGroup } = useReadingGroup(userId);
   const { buddyProfile, buddyProgress, buddyJournal } = useBuddyData(buddyId);
 
@@ -42,8 +42,20 @@ function Dashboard({ progress, journalEntries, userId, onStartReading, onViewJou
   return (
     <div className="dashboard fade-in">
       <header className="dashboard-header">
-        <h1>Roast Mutton</h1>
-        <p className="subtitle">A companion for your passage through Middle-earth</p>
+        <div className="header-content">
+          <div>
+            <h1>Roast Mutton</h1>
+            <p className="subtitle">A companion for your passage through Middle-earth</p>
+          </div>
+          {userEmail && (
+            <div className="user-info">
+              <span className="user-email">{userEmail}</span>
+              <button onClick={onLogout} className="logout-button" title="Sign out">
+                <LogOut size={18} />
+              </button>
+            </div>
+          )}
+        </div>
         <div className="ornament">⚔ ◈ ⚔</div>
       </header>
 

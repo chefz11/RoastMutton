@@ -13,6 +13,7 @@ import StatsView from './components/StatsView';
 import AuthModal from './components/AuthModal';
 import BuddyJournalView from './components/BuddyJournalView';
 import SharedStatsView from './components/SharedStatsView';
+import Toast from './components/Toast';
 import './App.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [currentView, setCurrentView] = useState('dashboard');
   const [selectedBook, setSelectedBook] = useState(null);
+  const [toast, setToast] = useState(null);
 
   // Show auth modal if user not logged in
   useEffect(() => {
@@ -55,16 +57,41 @@ function App() {
     }
   };
 
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+  };
+
   const handleAddJournalEntry = async (entry) => {
-    await addEntry(entry);
+    const result = await addEntry(entry);
+    if (result.success) {
+      showToast('Journal entry saved successfully!');
+    } else {
+      showToast(result.error || 'Failed to save journal entry. Please check your connection.', 'error');
+      console.error('Failed to add journal entry:', result.error);
+    }
+    return result;
   };
 
   const handleUpdateJournalEntry = async (updatedEntry) => {
-    await updateEntry(updatedEntry.id, updatedEntry);
+    const result = await updateEntry(updatedEntry.id, updatedEntry);
+    if (result.success) {
+      showToast('Journal entry updated successfully!');
+    } else {
+      showToast(result.error || 'Failed to update journal entry. Please check your connection.', 'error');
+      console.error('Failed to update journal entry:', result.error);
+    }
+    return result;
   };
 
   const handleDeleteJournalEntry = async (entryId) => {
-    await deleteEntry(entryId);
+    const result = await deleteEntry(entryId);
+    if (result.success) {
+      showToast('Journal entry deleted successfully!');
+    } else {
+      showToast(result.error || 'Failed to delete journal entry. Please check your connection.', 'error');
+      console.error('Failed to delete journal entry:', result.error);
+    }
+    return result;
   };
 
   const handleUpdateChapterPages = async (bookId, chapterNumber, pages) => {
@@ -147,11 +174,13 @@ function App() {
             progress={progress}
             journalEntries={journalEntries}
             userId={user?.uid}
+            userEmail={user?.email}
             onStartReading={handleStartReading}
             onViewJournal={() => setCurrentView('journal')}
             onViewStats={() => setCurrentView('stats')}
             onViewBuddyJournal={() => setCurrentView('buddy-journal')}
             onViewSharedStats={() => setCurrentView('shared-stats')}
+            onLogout={logout}
           />
         );
     }
@@ -177,6 +206,13 @@ function App() {
         />
       )}
       {renderView()}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </div>
   );
 }

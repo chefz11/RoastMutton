@@ -9,6 +9,11 @@ export function useAuth() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log('Auth state changed:', {
+        isAuthenticated: !!user,
+        email: user?.email,
+        uid: user?.uid
+      });
       setUser(user);
       setLoading(false);
     });

@@ -12,6 +12,22 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
+// Debug logging for Firebase configuration
+console.log('Firebase Config Status:', {
+  hasApiKey: !!firebaseConfig.apiKey,
+  hasAuthDomain: !!firebaseConfig.authDomain,
+  hasDatabaseURL: !!firebaseConfig.databaseURL,
+  hasProjectId: !!firebaseConfig.projectId,
+  authDomain: firebaseConfig.authDomain,
+  databaseURL: firebaseConfig.databaseURL
+});
+
+if (!firebaseConfig.apiKey || !firebaseConfig.databaseURL) {
+  console.error('CRITICAL: Firebase configuration missing! Check your environment variables.');
+}
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const database = getDatabase(app);
+
+console.log('Firebase initialized successfully');
