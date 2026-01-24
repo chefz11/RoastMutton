@@ -41,7 +41,7 @@
   color: #a89177;
 }
 
-.logout-button {
+.logout-button, .signin-button {
   background: transparent;
   border: 1px solid #6b5744;
   color: #a89177;
@@ -52,12 +52,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 }
 
-.logout-button:hover {
+.logout-button:hover, .signin-button:hover {
   background: rgba(212, 175, 55, 0.2);
   border-color: #d4af37;
   color: #d4af37;
+}
+
+.signin-button {
+  padding: 0.5rem 1rem;
 }
 
 .subtitle {

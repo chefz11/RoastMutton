@@ -1,11 +1,11 @@
 import { BOOKS } from '../data/books';
-import { Book, ScrollText, BarChart3, MapPin, Users, TrendingUp, LogOut } from 'lucide-react';
+import { Book, ScrollText, BarChart3, MapPin, Users, TrendingUp, LogOut, LogIn } from 'lucide-react';
 import { useReadingGroup } from '../hooks/useReadingGroup';
 import { useBuddyData } from '../hooks/useBuddyData';
 import GroupSetup from './GroupSetup';
 import './Dashboard.css';
 
-function Dashboard({ progress, journalEntries, userId, userEmail, onStartReading, onViewJournal, onViewStats, onViewBuddyJournal, onViewSharedStats, onLogout }) {
+function Dashboard({ progress, journalEntries, userId, userEmail, onStartReading, onViewJournal, onViewStats, onViewBuddyJournal, onViewSharedStats, onSignIn, onLogout }) {
   const { group, buddyId, createGroup, joinGroup } = useReadingGroup(userId);
   const { buddyProfile, buddyProgress, buddyJournal } = useBuddyData(buddyId);
 
@@ -47,11 +47,18 @@ function Dashboard({ progress, journalEntries, userId, userEmail, onStartReading
             <h1>Roast Mutton</h1>
             <p className="subtitle">A companion for your passage through Middle-earth</p>
           </div>
-          {userEmail && (
+          {userEmail ? (
             <div className="user-info">
               <span className="user-email">{userEmail}</span>
               <button onClick={onLogout} className="logout-button" title="Sign out">
                 <LogOut size={18} />
+              </button>
+            </div>
+          ) : (
+            <div className="user-info">
+              <button onClick={onSignIn} className="signin-button" title="Sign in">
+                <LogIn size={18} />
+                <span>Sign In</span>
               </button>
             </div>
           )}

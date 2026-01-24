@@ -201,36 +201,6 @@ textarea {
   opacity: 0.6;
 }
 
-/* Landing Page */
-.landing-page {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.landing-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.landing-header h1 {
-  text-align: center;
-}
-
-.landing-header .subtitle {
-  font-size: 1.2rem;
-  color: #a89177;
-  font-style: italic;
-  margin-top: -0.5rem;
-  text-align: center;
-}
-
-.sign-in-button {
-  margin-top: 1.5rem;
-  width: 100%;
-  max-width: 300px;
-  font-size: 1.1rem;
-}
-
 /* Responsive Design - Mobile First */
 @media (max-width: 768px) {
   .app {
