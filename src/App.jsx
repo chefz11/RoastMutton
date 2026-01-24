@@ -29,13 +29,6 @@ function App() {
   const [selectedBook, setSelectedBook] = useState(null);
   const [toast, setToast] = useState(null);
 
-  // Show auth modal if user not logged in
-  useEffect(() => {
-    if (!authLoading && !user) {
-      setShowAuthModal(true);
-    }
-  }, [authLoading, user]);
-
   const handleStartReading = (bookId) => {
     const book = BOOKS.find(b => b.id === bookId);
     if (!progress.startDate) {
@@ -199,9 +192,48 @@ function App() {
     );
   }
 
+  // Show landing page with sign-in button if not authenticated
+  if (!user) {
+    return (
+      <div className="app">
+        <div className="landing-page">
+          <header className="landing-header">
+            <h1>Roast Mutton</h1>
+            <p className="subtitle">A companion for your passage through Middle-earth</p>
+            <div className="ornament">⚔ ◈ ⚔</div>
+          </header>
+
+          <div className="welcome-message card golden">
+            <h2>Welcome, Traveler!</h2>
+            <p>Track your journey through J.R.R. Tolkien's Middle-earth books with a reading buddy.</p>
+            <p>Mark chapters complete, write journal entries, and share your adventure with a friend.</p>
+            <button onClick={() => setShowAuthModal(true)} className="sign-in-button">
+              Sign In to Begin
+            </button>
+          </div>
+
+          {showAuthModal && (
+            <AuthModal
+              onClose={() => setShowAuthModal(false)}
+              onSignIn={signInWithEmail}
+              onGoogleSignIn={signInWithGoogle}
+            />
+          )}
+        </div>
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="app">
-      {showAuthModal && !user && (
+      {showAuthModal && (
         <AuthModal
           onClose={() => setShowAuthModal(false)}
           onSignIn={signInWithEmail}

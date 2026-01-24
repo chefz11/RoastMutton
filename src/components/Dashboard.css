@@ -10,9 +10,20 @@
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   margin-bottom: 1rem;
+  position: relative;
+}
+
+.header-content > div:first-child {
+  text-align: center;
+}
+
+.header-content .user-info {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .user-info {
@@ -187,6 +198,9 @@
   max-width: 600px;
   margin: 3rem auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .welcome-icon {
