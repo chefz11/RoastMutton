@@ -263,6 +263,10 @@
     gap: 1rem;
   }
 
+  .header-content .user-info {
+    position: static;
+  }
+
   .user-info {
     width: 100%;
     justify-content: center;
